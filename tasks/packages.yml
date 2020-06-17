@@ -1,0 +1,5 @@
+---
+- name: ensure the required packages are installed
+  package:
+    name: "{{ dubzland_backup_client_packages }}"
+    state: present

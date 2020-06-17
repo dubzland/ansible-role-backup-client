@@ -1,0 +1,4 @@
+#!/bin/sh
+{% for dir in dubzland_backup_client_dirs %}
+/usr/local/bin/daily_backup -H {{ dubzland_backup_client_host }} -s {{ dir }}
+{% endfor %}

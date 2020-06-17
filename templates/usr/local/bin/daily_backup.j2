@@ -1,0 +1,117 @@
+#!/bin/bash
+
+set -e
+set -u
+set -o pipefail
+
+DOW=$(date +"%u")
+DRY_RUN=0
+VERBOSE=0
+
+debug() {
+	if [[ $VERBOSE -eq 1 ]]; then
+		d=$(date '+%F %X')
+		echo "${d}: $@"
+	fi
+}
+
+usage() {
+	echo "HERE BE THE USAGE"
+}
+
+error_exit() {
+	echo "$1" 1>&2
+	exit 1
+}
+
+while getopts "hnvb:d:H:s:" OPTION; do
+	case $OPTION in
+		d)
+			DOW="$OPTARG"
+			;;
+		h)
+			usage
+			exit 0
+			;;
+		n)
+			DRY_RUN=1
+			;;
+		v)
+			VERBOSE=1
+			;;
+		H)
+			TARGET_HOST="$OPTARG"
+			;;
+		s)
+			SOURCE_DIR="$OPTARG"
+			;;
+		?)
+			usage
+			exit 1
+			;;
+	esac
+done
+
+shift "$(($OPTIND -1))"
+
+#
+# Ensure a host was supplied
+#
+if [[ -z "$TARGET_HOST" ]]; then
+	error_exit "error: backup host (-H) is required"
+fi
+
+#
+# Ensure a source directory was supplied
+#
+if [[ -z "$SOURCE_DIR" ]]; then
+	error_exit "error: source directory (-s) is required"
+fi
+
+#
+# Ensure source directory is absolute
+#
+if [[ ! "$SOURCE_DIR" = /* ]]; then
+	error_exit "error: source directory must be an absolute path"
+fi
+
+#
+# Ensure a valid DOW was specified
+#
+if [[ ! $DOW =~ ^[1-7]$ ]]; then
+	error_exit "error: invalid DOW specified = [$DOW]"
+fi
+
+PREV_DOW=$(($DOW - 1))
+if [[ "$PREV_DOW" -lt 1 ]]; then
+	PREV_DOW=7
+fi
+
+TARGET_ROOT="/$(hostname -f)"
+DAILY_DIR="/daily.${DOW}"
+PREV_DIR="/daily.${PREV_DOW}"
+
+debug "HOST:        ${TARGET_HOST}"
+debug "SOURCE:      ${SOURCE_DIR}"
+debug "TARGET_DIR:  ${DAILY_DIR}"
+debug "PREV_DIR:    ${PREV_DIR}"
+
+RSYNC_PARAMS=(-aRs)
+RSYNC_PARAMS+=(--delete)
+RSYNC_PARAMS+=(--relative)
+RSYNC_PARAMS+=(--link-dest="${PREV_DIR}")
+
+if [[ $VERBOSE -eq 1 ]]; then
+	RSYNC_PARAMS+=(-v)
+fi
+
+if [[ $DRY_RUN -eq 1 ]]; then
+	RSYNC_PARAMS+=(-n)
+fi
+
+
+RSYNC_PARAMS+=("${SOURCE_DIR}")
+RSYNC_PARAMS+=("rsync://${TARGET_HOST}/$(hostname -f)${DAILY_DIR}")
+
+debug rsync ${RSYNC_PARAMS[@]}
+rsync "${RSYNC_PARAMS[@]}"
