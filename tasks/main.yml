@@ -8,7 +8,7 @@
     dest: /usr/local/bin/daily_backup
     owner: root
     group: root
-    mode: 0700
+    mode: 0755
 
 - name: ensure all backups are configured
   template:
@@ -16,4 +16,4 @@
     dest: "/etc/cron.daily/daily_backup"
     owner: root
     group: root
-    mode: 0700
+    mode: 0755
