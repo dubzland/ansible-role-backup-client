@@ -1,5 +1,9 @@
 # Ansible Role: Backup Client
-[![Gitlab pipeline status (self-hosted)](https://git.dubzland.net/dubzland/ansible-role-backup-client/badges/master/pipeline.svg)](https://git.dubzland.net/dubzland/ansible-role-backup-client)
+[![Gitlab pipeline status (self-hosted)](https://img.shields.io/gitlab/pipeline/dubzland/ansible-role-backup-client/main?gitlab_url=https%3A%2F%2Fgit.dubzland.net)](https://git.dubzland.net/dubzland/ansible-role-backup-client/pipelines)
+[![Ansible role downloads](https://img.shields.io/ansible/role/d/49802)](https://galaxy.ansible.com/dubzland/backup_client)
+[![Ansible Quality Score](https://img.shields.io/ansible/quality/49802)](https://galaxy.ansible.com/dubzland/backup_client)
+[![Liberapay patrons](https://img.shields.io/liberapay/patrons/jdubz)](https://liberapay.com/jdubz/donate)
+[![Liberapay receiving](https://img.shields.io/liberapay/receives/jdubz)](https://liberapay.com/jdubz/donate)
 
 Sets up an rsync-based backup client.  This role is highly opinionated, and
 therefore probably not fit for mass consumption.
