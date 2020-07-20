@@ -1,13 +1,20 @@
 ---
-image: jdubz/ci-docker-ansible:1.0.1
+image: jdubz/ci-docker-ansible:19.03
 
 services:
   - docker:19.03.1-dind
 
+variables:
+  BASH_ENV: /root/.bashrc
+
 molecule:
   stage: test
+  cache:
+    paths:
+      - .tox
   before_script:
-    - apk add --update python python-dev py-pip py3-pip
-    - ansible --version
+    - pip install tox tox-pyenv
+    - pyenv local 2.7.18 3.6.11 3.7.7 3.8.3
+    - tox --version
   script:
-    - molecule test --all
+    - tox
