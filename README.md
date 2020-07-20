@@ -52,7 +52,6 @@ None
 ```
 
 ## License
--------
 
 MIT
 
