@@ -34,6 +34,24 @@ dubzland_backup_client_dirs: []
 
 List of directories on the client machine to be backed up.
 
+### dubzland_backup_client_pre_backup_commands
+
+```yaml
+dubzland_backup_client_pre_backup_commands: []
+```
+
+List of commands to run prior to backing up directories.  Can be used for
+generating database backups or putting applications into read-only mode.  Use
+absolute paths to avoid PATH issues.
+
+### dubzland_backup_client_post_backup_commands
+
+```yaml
+dubzland_backup_client_post_backup_commands: []
+```
+
+List of commands to run after backing up directories.
+
 ## Dependencies
 
 None
