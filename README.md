@@ -1,7 +1,8 @@
 # Ansible Role: Backup Client
 [![Gitlab pipeline status (self-hosted)](https://img.shields.io/gitlab/pipeline/dubzland/ansible-role-backup-client/main?gitlab_url=https%3A%2F%2Fgit.dubzland.net)](https://git.dubzland.net/dubzland/ansible-role-backup-client/pipelines)
-[![Ansible role downloads](https://img.shields.io/ansible/role/d/49802)](https://galaxy.ansible.com/dubzland/backup_client)
-[![Ansible Quality Score](https://img.shields.io/ansible/quality/49802)](https://galaxy.ansible.com/dubzland/backup_client)
+[![Ansible role](https://img.shields.io/ansible/role/50081)](https://galaxy.ansible.com/dubzland/backup_client)
+[![Ansible role downloads](https://img.shields.io/ansible/role/d/50081)](https://galaxy.ansible.com/dubzland/backup_client)
+[![Ansible Quality Score](https://img.shields.io/ansible/quality/50081)](https://galaxy.ansible.com/dubzland/backup_client)
 [![Liberapay patrons](https://img.shields.io/liberapay/patrons/jdubz)](https://liberapay.com/jdubz/donate)
 [![Liberapay receiving](https://img.shields.io/liberapay/receives/jdubz)](https://liberapay.com/jdubz/donate)
 
