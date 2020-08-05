@@ -1,3 +1,6 @@
 ---
 dubzland_backup_client_host: "localhost"
 dubzland_backup_client_dirs: []
+
+dubzland_backup_client_pre_backup_commands: []
+dubzland_backup_client_post_backup_commands: []

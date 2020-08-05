@@ -1,4 +1,10 @@
 #!/bin/sh
+{% for cmd in dubzland_backup_client_pre_backup_commands %}
+{{ cmd }}
+{% endfor %}
 {% for dir in dubzland_backup_client_dirs %}
 /usr/local/bin/daily_backup -H {{ dubzland_backup_client_host }} -s {{ dir }}
+{% endfor %}
+{% for cmd in dubzland_backup_client_post_backup_commands %}
+{{ cmd }}
 {% endfor %}

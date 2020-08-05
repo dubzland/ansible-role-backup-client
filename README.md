@@ -1,7 +1,8 @@
 # Ansible Role: Backup Client
 [![Gitlab pipeline status (self-hosted)](https://img.shields.io/gitlab/pipeline/dubzland/ansible-role-backup-client/main?gitlab_url=https%3A%2F%2Fgit.dubzland.net)](https://git.dubzland.net/dubzland/ansible-role-backup-client/pipelines)
-[![Ansible role downloads](https://img.shields.io/ansible/role/d/49802)](https://galaxy.ansible.com/dubzland/backup_client)
-[![Ansible Quality Score](https://img.shields.io/ansible/quality/49802)](https://galaxy.ansible.com/dubzland/backup_client)
+[![Ansible role](https://img.shields.io/ansible/role/50081)](https://galaxy.ansible.com/dubzland/backup_client)
+[![Ansible role downloads](https://img.shields.io/ansible/role/d/50081)](https://galaxy.ansible.com/dubzland/backup_client)
+[![Ansible Quality Score](https://img.shields.io/ansible/quality/50081)](https://galaxy.ansible.com/dubzland/backup_client)
 [![Liberapay patrons](https://img.shields.io/liberapay/patrons/jdubz)](https://liberapay.com/jdubz/donate)
 [![Liberapay receiving](https://img.shields.io/liberapay/receives/jdubz)](https://liberapay.com/jdubz/donate)
 
@@ -32,6 +33,24 @@ dubzland_backup_client_dirs: []
 ```
 
 List of directories on the client machine to be backed up.
+
+### dubzland_backup_client_pre_backup_commands
+
+```yaml
+dubzland_backup_client_pre_backup_commands: []
+```
+
+List of commands to run prior to backing up directories.  Can be used for
+generating database backups or putting applications into read-only mode.  Use
+absolute paths to avoid PATH issues.
+
+### dubzland_backup_client_post_backup_commands
+
+```yaml
+dubzland_backup_client_post_backup_commands: []
+```
+
+List of commands to run after backing up directories.
 
 ## Dependencies
 
