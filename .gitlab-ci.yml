@@ -14,8 +14,8 @@ services:
         - .tool-versions
         - tox.ini
     paths:
-      - /var/lib/tox
-      - /root/.cache
+      - .tox
+      - .cache
   script:
     - asdf list python
     - asdf install
