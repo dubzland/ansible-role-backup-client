@@ -6,8 +6,6 @@ services:
     volumes:
       - certs:/certs/client
       - ./:/work
-      - cache:/root/.cache
-      - tox:/var/lib/tox
     depends_on:
       - docker
     networks:
