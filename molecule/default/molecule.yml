@@ -1,20 +1,26 @@
 ---
 dependency:
   name: galaxy
+  options:
+    ignore-certs: true
+    ignore-errors: true
+    requirements-file: requirements.yml
 driver:
   name: docker
 platforms:
-  - name: "${MOLECULE_PLATFORM:-debian9}"
-    image: "jdubz/docker-ci-${MOLECULE_IMAGE:-debian:stretch-slim}"
+  - name: "${MOLECULE_PLATFORM:-debian-bullseye}"
+    image: "jdubz/docker-ci-${MOLECULE_IMAGE:-debian:bullseye-slim}"
     pre_build_image: true
-    privileged: true
-    tmpfs:
-      - /run
-      - /run/lock
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    env:
-      LC_ALL: en_US.UTF-8
+test_sequence:
+  - lint
+  - destroy
+  - dependency
+  - syntax
+  - create
+  - converge
+  - idempotence
+  - verify
+  - destroy
 provisioner:
   name: ansible
 verifier:

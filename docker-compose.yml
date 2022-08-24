@@ -1,0 +1,30 @@
+version: '3'
+services:
+  test:
+    image: jdubz/molecule-testing:1.1.0
+    command: tox
+    volumes:
+      - certs:/certs/client
+      - ./:/work
+      - cache:/root/.cache
+      - tox:/var/lib/tox
+    depends_on:
+      - docker
+    networks:
+      - default
+      - backups-docker
+  docker:
+    image: docker:20.10-dind
+    privileged: yes
+    volumes:
+      - certs:/certs/client
+    networks:
+      - default
+      - backups-docker
+volumes:
+  cache:
+  certs:
+  tox:
+networks:
+  backups-docker:
+    internal: true

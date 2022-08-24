@@ -1,5 +1,5 @@
 ---
-- name: ensure the required packages are installed
-  package:
+- name: Ensure the required packages are installed
+  ansible.builtin.package:
     name: "{{ dubzland_backup_client_packages }}"
     state: present
