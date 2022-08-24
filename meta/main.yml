@@ -3,16 +3,22 @@ dependencies: []
 
 galaxy_info:
   role_name: backup_client
-  author: t3hpr1m3
+  author: dubzland
   description: rsync based backup client
   company: Cedar House Labs
+  issue_tracker_url: >-
+    http://git.dubzland.net/dubzland/ansible-role-gitlab/issues
   license: MIT
-  min_ansible_version: 2.2
+  min_ansible_version: "2.2"
   platforms:
     - name: Debian
       versions:
         - stretch
         - buster
+    - name: Ubuntu
+      versions:
+        - bionic
+        - focal
   galaxy_tags:
     - backup
     - rsync

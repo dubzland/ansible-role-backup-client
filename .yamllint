@@ -1,7 +1,9 @@
 ---
 extends: default
 ignore: |
+  .cache/
   .tox/
+  docker-compose.yml
 
 rules:
   line-length:

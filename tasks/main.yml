@@ -2,16 +2,16 @@
 - include_tasks: variables.yml
 - include_tasks: packages.yml
 
-- name: ensure backup script is in place
-  template:
+- name: Ensure backup script is in place
+  ansible.builtin.template:
     src: usr/local/bin/daily_backup.j2
     dest: /usr/local/bin/daily_backup
     owner: root
     group: root
     mode: 0755
 
-- name: ensure all backups are configured
-  template:
+- name: Ensure all backups are configured
+  ansible.builtin.template:
     src: "etc/cron.daily/daily_backup.j2"
     dest: "/etc/cron.daily/daily_backup"
     owner: root

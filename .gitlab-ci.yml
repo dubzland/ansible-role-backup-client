@@ -1,21 +1,24 @@
 ---
-image: jdubz/ci-docker-ansible:19.03
+image:
+  name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/jdubz/molecule-testing:1.1.0
 
 services:
-  - docker:19.03.1-dind
-
-variables:
-  BASH_ENV: /root/.bashrc
+  - name: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:20.10-dind
+    alias: docker
 
 .molecule:
   stage: test
   cache:
+    key:
+      files:
+        - .tool-versions
+        - tox.ini
     paths:
-      - .tox
-  before_script:
-    - pyenv local 2.7.18 3.6.11 3.7.7 3.8.3
-    - pip3 install tox tox-pyenv
+      - /var/lib/tox
+      - /root/.cache
   script:
+    - asdf list python
+    - asdf install
     - tox
 
 debian9:
@@ -30,6 +33,18 @@ debian10:
     MOLECULE_PLATFORM: debian-buster
     MOLEDULE_IMAGE: debian:buster-slim
 
+debian11:
+  extends: .molecule
+  variables:
+    MOLECULE_PLATFORM: debian-bullseye
+    MOLEDULE_IMAGE: debian:bullseye-slim
+
+ubuntu1404:
+  extends: .molecule
+  variables:
+    MOLECULE_PLATFORM: ubuntu-trusty
+    MOLEDULE_IMAGE: ubuntu:trusty
+
 ubuntu1604:
   extends: .molecule
   variables:
@@ -42,20 +57,8 @@ ubuntu1804:
     MOLECULE_PLATFORM: ubuntu-bionic
     MOLEDULE_IMAGE: ubuntu:bionic
 
-ubuntu1910:
-  extends: .molecule
-  variables:
-    MOLECULE_PLATFORM: ubuntu-eoan
-    MOLECULE_IMAGE: ubuntu:eoan
-
 ubuntu2004:
   extends: .molecule
   variables:
     MOLECULE_PLATFORM: ubuntu-focal
     MOLECULE_IMAGE: ubuntu:focal
-
-ubuntu2010:
-  extends: .molecule
-  variables:
-    MOLECULE_PLATFORM: ubuntu-groovy
-    MOLECULE_IMAGE: ubuntu:groovy
