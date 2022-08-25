@@ -20,8 +20,9 @@ variables:
     paths:
       - .cache
       - .tox
-  script:
+  before_script:
     - asdf install
+  script:
     - tox
 
 debian9:
