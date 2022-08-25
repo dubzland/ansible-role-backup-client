@@ -20,11 +20,8 @@ variables:
       - .cache
       - .tox
   script:
-    - asdf list python
     - asdf install
     - tox
-    - ls -al
-    - pwd
 
 debian9:
   extends: .molecule
