@@ -8,9 +8,62 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: "${MOLECULE_PLATFORM:-debian-bullseye}"
-    image: "jdubz/docker-ci-${MOLECULE_IMAGE:-debian:bullseye-slim}"
+  - name: debian-stretch
+    image: jdubz/docker-ci-debian:stretch-slim
     pre_build_image: true
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: debian-buster
+    image: jdubz/docker-ci-debian:buster-slim
+    pre_build_image: true
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: debian-bullseye
+    image: jdubz/docker-ci-debian:bullseye-slim
+    pre_build_image: true
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: ubuntu-trusty
+    image: jdubz/docker-ci-ubuntu:trusty
+    pre_build_image: true
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: ubuntu-xenial
+    image: jdubz/docker-ci-ubuntu:xenial
+    pre_build_image: true
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: ubuntu-bionic
+    image: jdubz/docker-ci-ubuntu:bionic
+    pre_build_image: true
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  - name: ubuntu-focal
+    image: jdubz/docker-ci-ubuntu:focal
+    pre_build_image: true
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
 test_sequence:
   - lint
   - destroy

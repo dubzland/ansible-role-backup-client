@@ -10,7 +10,7 @@ variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
   ANSIBLE_FORCE_COLOR: "true"
 
-.molecule:
+molecule:
   stage: test
   cache:
     key:
@@ -24,45 +24,3 @@ variables:
     - asdf install
   script:
     - tox
-
-debian9:
-  extends: .molecule
-  variables:
-    MOLECULE_PLATFORM: debian-stretch
-    MOLECULE_IMAGE: debian:stretch-slim
-
-debian10:
-  extends: .molecule
-  variables:
-    MOLECULE_PLATFORM: debian-buster
-    MOLEDULE_IMAGE: debian:buster-slim
-
-debian11:
-  extends: .molecule
-  variables:
-    MOLECULE_PLATFORM: debian-bullseye
-    MOLEDULE_IMAGE: debian:bullseye-slim
-
-ubuntu1404:
-  extends: .molecule
-  variables:
-    MOLECULE_PLATFORM: ubuntu-trusty
-    MOLEDULE_IMAGE: ubuntu:trusty
-
-ubuntu1604:
-  extends: .molecule
-  variables:
-    MOLECULE_PLATFORM: ubuntu-xenial
-    MOLEDULE_IMAGE: ubuntu:xenial
-
-ubuntu1804:
-  extends: .molecule
-  variables:
-    MOLECULE_PLATFORM: ubuntu-bionic
-    MOLEDULE_IMAGE: ubuntu:bionic
-
-ubuntu2004:
-  extends: .molecule
-  variables:
-    MOLECULE_PLATFORM: ubuntu-focal
-    MOLECULE_IMAGE: ubuntu:focal
