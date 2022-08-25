@@ -8,6 +8,7 @@ services:
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
+  ANSIBLE_FORCE_COLOR: "true"
 
 .molecule:
   stage: test
