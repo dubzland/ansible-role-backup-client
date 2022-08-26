@@ -1,6 +1,8 @@
 ---
 - name: Prepare
   hosts: all
+  collections:
+    - community.general
   tasks:
     - name: Ensure the locales and tzdata packages are installed
       ansible.builtin.package:
@@ -9,6 +11,6 @@
           - tzdata
         update_cache: true
     - name: Ensure the UTF-8 locale is present
-      community.general.locale_gen:
+      locale_gen:
         name: en_US.UTF-8
         state: present
