@@ -3,9 +3,5 @@ extends: default
 ignore: |
   .cache/
   .tox/
+  .venv/
   docker-compose.yml
-
-rules:
-  line-length:
-    ignore: |
-      /vars/main.yml

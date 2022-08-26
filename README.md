@@ -7,11 +7,12 @@
 [![Liberapay receiving](https://img.shields.io/liberapay/receives/jdubz)](https://liberapay.com/jdubz/donate)
 
 Sets up an rsync-based backup client.  This role is highly opinionated, and
-therefore probably not fit for mass consumption.
+therefore probably not fit for mass consumption.  Pair with
+[dubzland/backup_server](https://galaxy.ansible.com/dubzland/backup_server).
 
 ## Requirements
 
-Ansible version 2.0 or higher.
+Ansible version 2.11 or higher.  May work with prior versions.  YMMV.
 
 ## Role Variables
 

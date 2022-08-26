@@ -1,24 +1,26 @@
 ---
-dependencies: []
-
 galaxy_info:
+  namespace: dubzland
   role_name: backup_client
-  author: dubzland
+  author: Josh Williams
   description: rsync based backup client
-  company: Cedar House Labs
   issue_tracker_url: >-
-    http://git.dubzland.net/dubzland/ansible-role-gitlab/issues
+    http://git.dubzland.net/dubzland/ansible-role-backup-client/issues
   license: MIT
-  min_ansible_version: "2.2"
+  min_ansible_version: "2.11"
   platforms:
     - name: Debian
       versions:
         - stretch
         - buster
+        - bullseye
     - name: Ubuntu
       versions:
+        - xenial
         - bionic
         - focal
   galaxy_tags:
     - backup
     - rsync
+
+dependencies: []
