@@ -4,7 +4,7 @@ dependency:
   options:
     ignore-certs: true
     ignore-errors: true
-    requirements-file: molecule/requirements.yml
+    requirements-file: requirements.yml
 driver:
   name: docker
 platforms:
